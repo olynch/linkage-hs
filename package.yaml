@@ -1,0 +1,15 @@
+name: linkage
+
+dependencies:
+    - base
+    - gloss
+    - fgl
+    - lens
+    - vector
+
+executable:
+    main: linkage.hs
+    source-dirs: .
+
+default-extensions:
+    - OverloadedStrings
