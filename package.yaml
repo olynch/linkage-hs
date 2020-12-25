@@ -6,6 +6,8 @@ dependencies:
     - fgl
     - lens
     - vector
+    - nonlinear-optimization-ad
+    - ad
 
 executable:
     main: linkage.hs

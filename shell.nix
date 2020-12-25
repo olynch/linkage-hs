@@ -4,7 +4,9 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, base, fgl, gloss, hpack, lens, stdenv }:
+  f = { mkDerivation, ad, base, fgl, gloss, hpack, lens
+      , nonlinear-optimization-ad, stdenv, vector
+      }:
       mkDerivation {
         pname = "linkage";
         version = "0.0.0";
@@ -12,10 +14,11 @@ let
         isLibrary = false;
         isExecutable = true;
         libraryToolDepends = [ hpack ];
-        executableHaskellDepends = [ base fgl gloss lens ];
+        executableHaskellDepends = [
+          ad base fgl gloss lens nonlinear-optimization-ad vector
+        ];
         prePatch = "hpack";
-        license = "unknown";
-        hydraPlatforms = stdenv.lib.platforms.none;
+        license = stdenv.lib.licenses.agpl3;
       };
 
   haskellPackages = if compiler == "default"
